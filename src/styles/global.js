@@ -14,9 +14,15 @@ export default createGlobalStyle`
     font-family: 'Poppins', serif;
   }
 
-  a {
+  a, button {
     text-decoration: none;
+    font-family: 'Poppins', serif;
   }
+
+  a{
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+  }
+  
 
   button, a{
     cursor: pointer;
@@ -25,5 +31,28 @@ export default createGlobalStyle`
 
   button, a:hover {
     filter: brightness(0.9);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  input{
+    font-family: 'Roboto', serif;
+    font-size: 16px;
+    padding: 14px 12px;
+    background-color: ${({theme})=>theme.COLORS.DARK_900};
+    border: 0;
+    border-radius: 8px;
+  }
+
+  label{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: ${({theme})=>theme.COLORS.LIGHT_400};
   }
 `
