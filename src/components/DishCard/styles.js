@@ -39,3 +39,8 @@ export const Container = styled.div`
     font-size: 16px;
   }
 `;
+
+export const Select = styled.div`
+  display: flex;
+  gap: 12px;
+`;

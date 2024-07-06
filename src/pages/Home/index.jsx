@@ -7,6 +7,7 @@ import Cookies from '../../../assets/cookies.png'
 import Dish from '../../../assets/Dish.png'
 
 export function Home(){
+  const dish = {img: Dish, title: "Salada Ravanello", price: 35.90}
   return(
     <Container>
       <Header/>
@@ -19,13 +20,13 @@ export function Home(){
           </section>
         </Banner>
         <Section title="Refeições">
-          <DishCard img={Dish} title="Salada Ravanello" price="35,50"/>
+          <DishCard img={dish.img} title={dish.title} price={dish.price}/>
         </Section>
         <Section title="Sobremesas">
-          <DishCard img={Dish} title="Salada Ravanello" price="35,50"/>
+          <DishCard img={dish.img} title={dish.title} price={dish.price}/>
         </Section>
         <Section title="Bebidas">
-          <DishCard img={Dish} title="Salada Ravanello" price="35,50"/>
+          <DishCard img={dish.img} title={dish.title} price={dish.price}/>
         </Section>
         
       </Main>

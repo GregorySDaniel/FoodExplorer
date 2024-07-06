@@ -45,8 +45,8 @@ export const Main = styled.main`
 `;
 
 export const TagsSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 `;
 
@@ -60,6 +60,12 @@ export const OrderSection = styled.div`
 
   button{
     width: 100%;
+    max-width: 360px;
   }
 
+`;
+
+export const Select = styled.div`
+  display: flex;
+  gap: 12px;
 `;
