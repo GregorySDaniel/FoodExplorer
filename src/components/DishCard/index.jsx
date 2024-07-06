@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 import { Button } from '../Button'
-import { LuPlus, LuMinus } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
+import { Select } from "../Select";
 
 export function DishCard({ img, title, price }){
   return(
@@ -10,11 +10,7 @@ export function DishCard({ img, title, price }){
       <img src={img} alt="Imagem do Prato" />
       <p>{title}</p>
       <p><span>R$ {price}</span></p>
-      <section>
-        <LuMinus size={28}/>
-        <p>01</p>
-        <LuPlus size={28}/>
-      </section>
+      <Select/>
       <Button title="incluir"/>
     </Container>
   )

@@ -25,11 +25,6 @@ export const Container = styled.div`
     width: 100%;
   }
 
-  section{
-    display: flex;
-    gap: 12px;
-  }
-
   > svg{
     position: absolute;
     top: 12px;
