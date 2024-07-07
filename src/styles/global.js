@@ -45,6 +45,7 @@ export default createGlobalStyle`
     font-size: 16px;
     padding: 14px 12px;
     background-color: ${({theme})=>theme.COLORS.DARK_900};
+    color: ${({theme})=>theme.COLORS.LIGHT_100};
     border: 0;
     border-radius: 8px;
   }
