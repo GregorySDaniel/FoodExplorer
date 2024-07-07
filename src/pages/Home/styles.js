@@ -48,5 +48,4 @@ export const Banner = styled.div`
   p{
     font-size: 12px;
   }
-
 `;
