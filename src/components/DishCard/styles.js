@@ -19,6 +19,8 @@ export const Container = styled.div`
 
   img{
     width: 88px;
+    height: 88px;
+    object-fit: contain;
   }
 
   button{

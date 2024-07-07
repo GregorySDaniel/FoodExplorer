@@ -40,11 +40,11 @@ export default createGlobalStyle`
     width: 100%;
   }
 
-  input{
+  input, textarea {
     font-family: 'Roboto', serif;
     font-size: 16px;
     padding: 14px 12px;
-    background-color: ${({theme})=>theme.COLORS.DARK_900};
+    background-color: ${({theme})=>theme.COLORS.DARK_800};
     color: ${({theme})=>theme.COLORS.LIGHT_100};
     border: 0;
     border-radius: 8px;
@@ -55,5 +55,15 @@ export default createGlobalStyle`
     flex-direction: column;
     gap: 8px;
     color: ${({theme})=>theme.COLORS.LIGHT_400};
+  }
+
+  select {
+    font-family: 'Roboto', serif;
+    font-size: 16px;
+    padding: 14px 12px;
+    background-color: ${({theme})=>theme.COLORS.DARK_900};
+    color: ${({theme})=>theme.COLORS.LIGHT_400};
+    border: 0;
+    border-radius: 8px;
   }
 `
