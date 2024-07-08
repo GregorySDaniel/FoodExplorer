@@ -18,4 +18,9 @@ export const Container = styled.header`
     width: 190px;
   }
 
+  .close{
+    position: fixed;
+    z-index: 2;
+  }
+
 `
