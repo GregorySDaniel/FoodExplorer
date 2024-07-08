@@ -27,7 +27,7 @@ export const Container = styled.div`
     width: 100%;
   }
 
-  > svg{
+  .svg {
     position: absolute;
     top: 12px;
     right: 12px;

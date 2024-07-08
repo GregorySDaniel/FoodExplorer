@@ -1,17 +1,20 @@
 import { Container, Select } from "./styles";
 import { Button } from '../Button'
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { LuPlus, LuMinus } from "react-icons/lu";
 import { useState } from 'react';
 
-export function DishCard({ img, title, price }){
+export function DishCard({ img, title, price, id }){
   const [quantity, setQuantity] = useState(1);
+  const [isLiked, setIsLiked] = useState(false);
 
   return(
     <Container>
-      <FaRegHeart size={28}/>
-      <Link to="/details/2"><img src={img} alt="Imagem do Prato"></img></Link>
+      <div onClick={() => setIsLiked(!isLiked)} className="svg">
+        {isLiked ? <FaHeart size={28} color='#750310'/> : <FaRegHeart size={28}/> }
+      </div>
+      <Link to={`details/${id}`}><img src={img} alt="Imagem do Prato"></img></Link>
       <p>{title}</p>
       <p><span>R$ {(price * quantity).toFixed(2)}</span></p>
       <Select>

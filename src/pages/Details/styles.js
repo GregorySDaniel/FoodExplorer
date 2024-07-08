@@ -33,6 +33,8 @@ export const Main = styled.main`
   img {
     margin-top: 52px;
     width: 264px;
+    height: 264px;
+    object-fit: contain;
   }
 
   h1{

@@ -21,6 +21,8 @@ export function Home(){
     fetchData();
   }, [])
 
+  console.log(dishes)
+
   return(
     <Container>
       <Header/>
@@ -47,7 +49,8 @@ export function Home(){
             .filter(dish => dish.category === 'meals')
             .map((dish) => (
               <SplideSlide key={String(dish.id)}>
-                <DishCard 
+                <DishCard
+                id={dish.id}
                 img={`${api.defaults.baseURL}/files/${dish.image}`} 
                 title={dish.name} 
                 price={dish.price}/>
@@ -71,6 +74,7 @@ export function Home(){
           .map((dish) => (
             <SplideSlide key={String(dish.id)}>
               <DishCard
+              id={dish.id}
               img={`${api.defaults.baseURL}/files/${dish.image}`} 
               title={dish.name} 
               price={dish.price}/>
@@ -94,6 +98,7 @@ export function Home(){
           .map((dish) => (
             <SplideSlide key={String(dish.id)}>
             <DishCard
+            id={dish.id}
             img={`${api.defaults.baseURL}/files/${dish.image}`} 
             title={dish.name} 
             price={dish.price}/>
