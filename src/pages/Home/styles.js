@@ -22,6 +22,12 @@ export const Main = styled.main`
   
   padding: 24px;
   gap: 20px;
+
+  @media(min-width: 1024px){
+    gap: 36px;
+    padding: 24px 10%;
+  } 
+
 `;
 
 
@@ -36,16 +42,40 @@ export const Banner = styled.div`
   height: 120px;
   border-radius: 3px;
 
+  @media(min-width: 1024px){
+    max-width: 1440px;
+    height: 260px;
+    margin-top: 128px;
+    justify-content: center;
+  } 
+
   img{
-    margin-top: -28px;
+    margin-top: -4px;
     margin-left: -24px;
+    width: 12rem;
+    @media(min-width: 1024px){
+      width: 600px;
+      margin-top: -128px;
+      margin-left: -64px;
+    } 
   }
 
   h1{
-    font-size: 16px;
+    font-size: 1rem;
+
+    @media(min-width: 1024px){
+    font-size: 48px;
+    font-weight: 500;
+    } 
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
   }
 
   p{
-    font-size: 12px;
+    font-size: 1rem;
   }
 `;

@@ -28,6 +28,7 @@
         <Main>
           <Link to="/">&lt; voltar</Link>
           <img src={`${api.defaults.baseURL}/files/${dish.image}`} alt="Foto do prato" />
+          <section>
           <h1>{dish.name}</h1>
           <p>{dish.description}</p>
           <TagsSection>
@@ -44,6 +45,7 @@
             </Select>
             <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`}/>
           </OrderSection>
+          </section>
         </Main>
         <Footer/>
       </Container>

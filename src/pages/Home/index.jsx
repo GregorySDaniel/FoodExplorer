@@ -21,8 +21,6 @@ export function Home(){
     fetchData();
   }, [])
 
-  console.log(dishes)
-
   return(
     <Container>
       <Header/>
@@ -52,7 +50,8 @@ export function Home(){
                 <DishCard
                 id={dish.id}
                 img={`${api.defaults.baseURL}/files/${dish.image}`} 
-                title={dish.name} 
+                title={dish.name}
+                description={dish.description} 
                 price={dish.price}/>
               </SplideSlide>
             ))}
@@ -77,6 +76,7 @@ export function Home(){
               id={dish.id}
               img={`${api.defaults.baseURL}/files/${dish.image}`} 
               title={dish.name} 
+              description={dish.description} 
               price={dish.price}/>
             </SplideSlide>
           ))}
@@ -100,7 +100,8 @@ export function Home(){
             <DishCard
             id={dish.id}
             img={`${api.defaults.baseURL}/files/${dish.image}`} 
-            title={dish.name} 
+            title={dish.name}
+            description={dish.description} 
             price={dish.price}/>
             </SplideSlide>
           ))}

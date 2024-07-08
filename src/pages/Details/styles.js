@@ -15,25 +15,43 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   grid-area: content;
+  position: relative;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   padding: 48px;
   gap: 24px;
   
+  @media(min-width: 1024px){
+    flex-direction: row;
+  }
+  
+  > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px;
+    gap: 24px;
+  }
+
+  @media(min-width: 1024px){
+    padding: 48px 10%;
+  }
+  
   a {
-    font-size: 24px;
+    font-size: 1.5rem;
     position: absolute;
-    left: 48px;
+    left: 10%;
+    top: 48px;
     color: ${({theme}) => theme.COLORS.LIGHT_300};
   }
   
   img {
     margin-top: 52px;
-    width: 264px;
-    height: 264px;
+    width: 16.5rem;
+    height: 16.5rem;
     object-fit: contain;
   }
 
@@ -44,6 +62,8 @@ export const Main = styled.main`
   p{
     text-align: center;
   }
+
+
 `;
 
 export const TagsSection = styled.div`
@@ -62,7 +82,7 @@ export const OrderSection = styled.div`
 
   button{
     width: 100%;
-    max-width: 360px;
+    max-width: 22.5rem;
   }
 
 `;

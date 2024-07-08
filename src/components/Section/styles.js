@@ -8,8 +8,11 @@ export const Container = styled.div`
 
   width: 100%;
 
-  p{
-    font-size: 18px;
+  > p{
+    font-size: 1.1rem;
+    @media(min-width: 1020px){
+      font-size: 1.8rem;
+  }
   }
 
   > div {

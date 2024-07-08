@@ -24,13 +24,15 @@ export default createGlobalStyle`
   }
   
 
-  button, a{
+  button, a, svg{
     cursor: pointer;
-    transition: filter 0.2s;
+    transition: transform 0.3s ease;
   }
 
-  button, a:hover {
-    filter: brightness(0.9);
+  button:hover, a:hover, svg:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
   }
 
   form {
@@ -42,7 +44,7 @@ export default createGlobalStyle`
 
   input, textarea {
     font-family: 'Roboto', serif;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 14px 12px;
     background-color: ${({theme})=>theme.COLORS.DARK_800};
     color: ${({theme})=>theme.COLORS.LIGHT_100};
@@ -59,7 +61,7 @@ export default createGlobalStyle`
 
   select {
     font-family: 'Roboto', serif;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 14px 12px;
     background-color: ${({theme})=>theme.COLORS.DARK_900};
     color: ${({theme})=>theme.COLORS.LIGHT_400};

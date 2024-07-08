@@ -28,7 +28,7 @@ export const Close = styled.div`
 
   p{
     font-family: 'Roboto', serif;
-    font-size: 22px;
+    font-size: 1.4rem;
     margin-left: 8px;
   }
 `;

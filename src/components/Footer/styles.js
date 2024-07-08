@@ -13,6 +13,11 @@ export const Container = styled.footer`
   background-color: ${({theme}) => theme.COLORS.DARK_700};
 
   p{
-    font-size: 12px;
+    font-size: 0.7rem;
+  }
+
+  @media(min-width: 1020px){
+    justify-content: space-between;
+    padding: 0 10%;
   }
 `;
