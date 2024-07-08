@@ -29,22 +29,22 @@
           <Link to="/">&lt; voltar</Link>
           <img src={`${api.defaults.baseURL}/files/${dish.image}`} alt="Foto do prato" />
           <section>
-          <h1>{dish.name}</h1>
-          <p>{dish.description}</p>
-          <TagsSection>
-            <Tag title="arroz"/>
-            <Tag title="alface"/>
-            <Tag title="pão"/>
-            <Tag title="tomate"/>
-          </TagsSection>
-          <OrderSection>
-            <Select>
-              <LuMinus size={28} onClick={() => quantity > 1 ? setQuantity(quantity-1) : setQuantity(quantity)}/>
-              <p>{quantity}</p>
-              <LuPlus size={28} onClick={() => quantity < 10 ? setQuantity(quantity+1) : setQuantity(quantity)}/>
-            </Select>
-            <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`}/>
-          </OrderSection>
+            <h1>{dish.name}</h1>
+            <p>{dish.description}</p>
+            <TagsSection>
+              <Tag title="arroz"/>
+              <Tag title="alface"/>
+              <Tag title="pão"/>
+              <Tag title="tomate"/>
+            </TagsSection>
+            <OrderSection>
+              <Select>
+                <LuMinus size={28} onClick={() => quantity > 1 ? setQuantity(quantity-1) : setQuantity(quantity)}/>
+                <p>{quantity}</p>
+                <LuPlus size={28} onClick={() => quantity < 10 ? setQuantity(quantity+1) : setQuantity(quantity)}/>
+              </Select>
+              <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`}/>
+            </OrderSection>
           </section>
         </Main>
         <Footer/>

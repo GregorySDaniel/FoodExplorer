@@ -1,6 +1,7 @@
 import { Container } from "./styles"
 import logo from '../../../assets/logo.png'
 import { Button } from "../../components/Button"
+import { AuthBox } from "../../components/AuthBox"
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
@@ -24,6 +25,8 @@ export function SignIn(){
   return(
     <Container>
       <img src={logo} alt="Logo do FoodExplorer" />
+      <AuthBox>
+        <h1 className="Desktop">Faça Login</h1>
       <form onSubmit={handleSignIn}>
         <label>
           Email
@@ -35,7 +38,8 @@ export function SignIn(){
         </label>
         <Button type="submit" title="Entrar"/>
       </form>
-        <Link to="/register">Criar uma conta</Link>
+      <Link to="/register">Criar uma conta</Link>
+      </AuthBox>
     </Container>
   )
 

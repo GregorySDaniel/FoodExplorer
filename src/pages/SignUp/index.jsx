@@ -1,6 +1,7 @@
 import { Container } from "./styles"
 import logo from '../../../assets/logo.png'
 import { Button } from "../../components/Button"
+import { AuthBox } from "../../components/AuthBox"
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { api } from '../../services/api'
@@ -36,6 +37,8 @@ export function SignUp(){
   return(
     <Container>
       <img src={logo} alt="Logo do FoodExplorer" />
+      <AuthBox>
+        <h1 className="desktop">Crie sua conta</h1>
       <form onSubmit={handleSignUp}>
         <label>
           Seu nome
@@ -51,7 +54,8 @@ export function SignUp(){
         </label>
         <Button title="Criar conta" type="submit"/>
       </form>
-        <Link to="/">Já tenho uma conta</Link>
+      <Link to="/">Já tenho uma conta</Link>
+      </AuthBox>
     </Container>
   )
 

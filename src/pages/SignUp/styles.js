@@ -13,8 +13,22 @@ export const Container = styled.div`
   gap: 64px;
 
   a{
-    margin-top: -32px;
     font-size: 16px;
   }
 
+  h1{
+    font-weight: 400;
+  }
+
+  @media(min-width: 1024px){
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .desktop{
+    @media (max-width:1024px){
+      display: none;
+    }
+  }
+
 `;
+

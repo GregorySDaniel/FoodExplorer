@@ -6,6 +6,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+
+
   width: 100vw;
   height: 85vh;
 
@@ -17,4 +19,18 @@ export const Container = styled.div`
     font-size: 16px;
   }
 
+  h1{
+    font-weight: 400;
+  }
+
+  @media(min-width: 1024px){
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .desktop{
+    @media (max-width:1024px){
+      display: none;
+    }
+  }
 `;
+

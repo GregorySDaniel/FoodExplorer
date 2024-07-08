@@ -31,11 +31,16 @@ export const Main = styled.main`
   > section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 48px;
+    padding: 36px;
     gap: 24px;
+    
+    @media(max-width:1024px){
+      text-align: center;
+      align-items: center;
+    }
+    
   }
-
+  
   @media(min-width: 1024px){
     padding: 48px 10%;
   }
@@ -53,14 +58,27 @@ export const Main = styled.main`
     width: 16.5rem;
     height: 16.5rem;
     object-fit: contain;
+
+    @media(min-width: 1024px){
+      width: 24.4rem;
+      height: 24.4rem;
+    } 
   }
 
   h1{
     font-weight: 400;
+    font-size: 2rem;
+
+    @media(min-width: 1024px){
+      font-size: 3rem;
+      font-weight: 500;
+    }
   }
 
   p{
-    text-align: center;
+    @media(min-width: 1024px){
+      font-size: 1.6rem;
+    }
   }
 
 
@@ -69,7 +87,11 @@ export const Main = styled.main`
 export const TagsSection = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
+
+  P{
+    font-size: 1rem;
+  }
 `;
 
 export const OrderSection = styled.div`
@@ -77,7 +99,8 @@ export const OrderSection = styled.div`
   align-items: center;
   justify-content: center;
   width: 85%;
-  gap: 12px;
+  gap: 28px;
+  margin-top: 48px;
 
 
   button{
@@ -90,4 +113,9 @@ export const OrderSection = styled.div`
 export const Select = styled.div`
   display: flex;
   gap: 12px;
+  align-items: center;
+
+  p {
+    font-weight: 600;
+  }
 `;
