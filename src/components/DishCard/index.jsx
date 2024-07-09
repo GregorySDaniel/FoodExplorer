@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { LuPlus, LuMinus } from "react-icons/lu";
 import { useState } from 'react';
 
-export function DishCard({ img, title, price, id, description }){
+export function DishCard({ img, title, price, id, description, orders, setOrders }){
   const [quantity, setQuantity] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -23,7 +23,10 @@ export function DishCard({ img, title, price, id, description }){
         <p>{quantity}</p>
         <LuPlus size={28} onClick={() => quantity < 10 ? setQuantity(quantity+1) : setQuantity(quantity)}/>
       </Select>
-      <Button title="incluir" onClick={()=>console.log("cliquei")}/>
+      <Button title="incluir" onClick={()=>{
+        setOrders(orders + quantity);
+        setQuantity(1);
+        }}/>
     </Container>
   )
 }

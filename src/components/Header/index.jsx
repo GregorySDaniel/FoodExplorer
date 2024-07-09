@@ -10,7 +10,7 @@ import { Button } from '../Button';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../hooks/auth';
 
-export function Header(){
+export function Header({orders}){
   const [sideMenu, setSideMenu] = useState(false);
   const navigation = useNavigate();
 
@@ -20,14 +20,14 @@ export function Header(){
       <IoIosMenu className="mobile" size={32} onClick={()=> setSideMenu(!sideMenu)}/> 
       <Link to="/"><img src={Logo} alt="Logo do FoodExplorer" /></Link>
       <Link to="/orders" className="mobile">
-      <p>0</p>
+      <p>{orders ? orders : 0}</p>
       <RiFileList3Line size={32}/>
       </Link>
       <div className="search desktop">
         <IoIosSearch size={28}/>
         <input type="text" placeholder="Busque por pratos ou ingredientes"/>
      </div>
-      <Button className="desktop" title={`Pedidos (0)`} onClick={()=>navigation('/orders')}/>
+      <Button className="desktop" title={`Pedidos (${orders ? orders : 0})`} onClick={()=>navigation('/orders')}/>
       <SideMenu isOpen={sideMenu}/>
       <IoIosLogOut className="desktop" size={32} onClick={()=>{signOut()}}/>
       {

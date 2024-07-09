@@ -12,7 +12,8 @@ import '@splidejs/react-splide/css';
 
 export function Home(){
   const [dishes, setDishes] = useState([]);
-  
+  const [orders, setOrders] = useState(0);
+
   useEffect(()=>{
     async function fetchData(){
       const response = await api.get('dishes');
@@ -23,7 +24,7 @@ export function Home(){
 
   return(
     <Container>
-      <Header/>
+      <Header orders={orders}/>
       <Main>
         <Banner>
           <img src={Cookies} alt="Imagem de Cookies" />
@@ -52,7 +53,9 @@ export function Home(){
                 img={`${api.defaults.baseURL}/files/${dish.image}`} 
                 title={dish.name}
                 description={dish.description} 
-                price={dish.price}/>
+                price={dish.price}
+                orders={orders}
+                setOrders={setOrders}/>
               </SplideSlide>
             ))}
           </Splide>
@@ -77,7 +80,9 @@ export function Home(){
               img={`${api.defaults.baseURL}/files/${dish.image}`} 
               title={dish.name} 
               description={dish.description} 
-              price={dish.price}/>
+              price={dish.price}
+              orders={orders}
+              setOrders={setOrders}/>
             </SplideSlide>
           ))}
           </Splide>
@@ -102,7 +107,9 @@ export function Home(){
             img={`${api.defaults.baseURL}/files/${dish.image}`} 
             title={dish.name}
             description={dish.description} 
-            price={dish.price}/>
+            price={dish.price}
+            orders={orders}
+            setOrders={setOrders}/>
             </SplideSlide>
           ))}
           </Splide>
