@@ -46,10 +46,10 @@ export default createGlobalStyle`
     font-family: 'Roboto', serif;
     font-size: 1rem;
     padding: 14px 12px;
+    border-radius: 8px;
     background-color: ${({theme})=>theme.COLORS.DARK_800};
     color: ${({theme})=>theme.COLORS.LIGHT_100};
     border: 0;
-    border-radius: 8px;
   }
 
   label{
@@ -67,5 +67,9 @@ export default createGlobalStyle`
     color: ${({theme})=>theme.COLORS.LIGHT_400};
     border: 0;
     border-radius: 8px;
+  }
+
+  input:focus, select:focus, textarea:focus {
+  outline: none;
   }
 `

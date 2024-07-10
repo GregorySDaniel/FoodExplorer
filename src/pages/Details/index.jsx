@@ -35,17 +35,19 @@ import { USER_ROLES } from "../../utils/roles";
             <h1>{dish.name}</h1>
             <p>{dish.description}</p>
             <TagsSection>
-              <Tag title="arroz"/>
-              <Tag title="alface"/>
-              <Tag title="pão"/>
-              <Tag title="tomate"/>
+              { dish.ingredients &&
+                dish.ingredients.map((ingredient)=>(
+                  <Tag key={ingredient.id} title={ingredient.name}/>
+                ))
+              }
             </TagsSection>
             <OrderSection>
-              <Select>
+              { user.role === USER_ROLES.CUSTOMER && 
+                <Select>
                 <LuMinus size={28} onClick={() => quantity > 1 ? setQuantity(quantity-1) : setQuantity(quantity)}/>
                 <p>{quantity}</p>
                 <LuPlus size={28} onClick={() => quantity < 10 ? setQuantity(quantity+1) : setQuantity(quantity)}/>
-              </Select>
+              </Select>}
               { user.role ===  USER_ROLES.ADMIN ?
                 <Button title='Editar prato'/> :
                 <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`}/>

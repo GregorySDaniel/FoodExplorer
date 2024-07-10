@@ -26,4 +26,19 @@ export const Main = styled.div`
   h1{
     font-weight: 400;
   }
+
+  .ingredients{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 20px;
+
+    background-color: ${({theme}) => theme.COLORS.DARK_800};
+    padding: 8px 12px;
+    border-radius: 8px;
+
+  }
+
 `;

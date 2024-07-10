@@ -22,8 +22,12 @@ export function Header({orders, setSearch}){
       <IoIosMenu className="mobile" size={32} onClick={()=> setSideMenu(!sideMenu)}/> 
       <Link to="/"><img src={(user.role === USER_ROLES.ADMIN) ? adminLogo : Logo} alt="Logo do FoodExplorer" /></Link>
       <Link to="/orders" className="mobile">
+      { user.role === USER_ROLES.CUSTOMER && 
+      <>
       <p>{orders ? orders : 0}</p>
       <RiFileList3Line size={32}/>
+      </>}
+
       </Link>
 
       <div className="search desktop">

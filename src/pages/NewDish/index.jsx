@@ -2,6 +2,7 @@ import { Container, Main } from "./styles";
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
+import { AddTag } from '../../components/AddTag';
 import { Link } from "react-router-dom";
 import { api } from '../../services/api';
 import { useState } from "react";
@@ -13,6 +14,8 @@ export function NewDish(){
   const [imageFile, setImageFile] = useState(null)
   const [price, setPrice] = useState();
   const [category, setCategory] = useState("meals");
+  const [ingredients, setIngredients] = useState([]);
+
 
   const navigation = useNavigate();
 
@@ -33,6 +36,9 @@ export function NewDish(){
     fileUploadForm.append('category', category);
     fileUploadForm.append('price', price);
     fileUploadForm.append('description', description);
+    ingredients.forEach(ingredient => {
+      fileUploadForm.append('ingredients', ingredient);
+    });
 
     try{ 
       await api.post('/dishes', fileUploadForm)
@@ -75,9 +81,14 @@ export function NewDish(){
             </select>
           </label>
 
-          <label>
+          <label >
             Ingredientes
-            <input type="text" />
+            <div className="ingredients">
+              { ingredients && ingredients.map((ingredient, index)=>
+              (<AddTag key={index} className="tags" title={ingredient} setIngredients={setIngredients} ingredients={ingredients}/>)
+              )}
+              <AddTag className="tags" title="Adicionar" isNew setIngredients={setIngredients} ingredients={ingredients}/>
+            </div>
           </label>
 
           <label>
