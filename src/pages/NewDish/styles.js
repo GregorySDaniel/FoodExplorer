@@ -22,6 +22,9 @@ export const Main = styled.div`
   
   padding: 8px 28px;
 
+  a:hover{
+    transform: none;
+  }
 
   h1{
     font-weight: 400;
