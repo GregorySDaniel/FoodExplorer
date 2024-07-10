@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: ${({theme}) => theme.COLORS.DARK_200};
   
   height: 18rem;

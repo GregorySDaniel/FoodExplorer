@@ -19,7 +19,16 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   
   padding: 24px;
   gap: 20px;
+
+  a {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 10%;
+    top: 48px;
+    color: ${({theme}) => theme.COLORS.LIGHT_300};
+  }
 `;

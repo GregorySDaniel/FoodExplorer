@@ -42,6 +42,20 @@ export const Banner = styled.div`
   height: 120px;
   border-radius: 3px;
 
+  animation: zoomin 1s ease-in-out;
+
+  @keyframes zoomin {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+    }
+
+
   @media(min-width: 1024px){
     max-width: 1440px;
     height: 260px;

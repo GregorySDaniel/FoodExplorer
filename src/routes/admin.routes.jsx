@@ -1,0 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
+
+import { Home } from '../pages/Home';
+import { Details } from '../pages/Details';
+import { NewDish } from '../pages/NewDish';
+import { Orders } from '../pages/Orders';
+
+export function AdminRoutes(){
+  return(
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/details/:id" element={<Details/>}/>
+      <Route path="/new" element={<NewDish/>}/>
+      <Route path="/orders" element={<Orders/>}/>
+
+    </Routes>
+  )
+}

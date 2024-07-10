@@ -9,6 +9,13 @@ export const Container = styled.div`
   background-color: ${({theme}) => theme.COLORS.DARK_400};
   z-index: 1;
   transition: transform 0.3s ease-in-out;
+
+  h1{
+    font-weight: 200;
+    padding: 6px 0;
+    border-bottom: 1px solid ${({theme}) => theme.COLORS.LIGHT_700};
+    margin-bottom: 8px;
+  }
   
   &.open {
     transform: translateX(0);
@@ -44,6 +51,7 @@ export const Content = styled.div`
   input{
     width: 100%;
     padding-left: 48px;
+    margin-bottom: 24px;
   }
 
   .search svg {

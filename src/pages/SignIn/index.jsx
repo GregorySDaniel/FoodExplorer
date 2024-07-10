@@ -26,7 +26,7 @@ export function SignIn(){
     <Container>
       <img src={logo} alt="Logo do FoodExplorer" />
       <AuthBox>
-        <h1 className="Desktop">Faça Login</h1>
+        <h1 className="desktop">Faça Login</h1>
       <form onSubmit={handleSignIn}>
         <label>
           Email

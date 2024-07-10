@@ -4,15 +4,19 @@ import { Section } from "../../components/Section";
 import { Footer } from "../../components/Footer";
 import { DishCard } from "../../components/DishCard";
 import Cookies from '../../../assets/cookies.png'
-import Dish from '../../../assets/Dish.png'
-import { api } from '../../services/api';
+import { api } from '../../services/api'; 
 import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { USER_ROLES } from "../../utils/roles";
+import { useAuth } from "../../hooks/auth";
 
 export function Home(){
   const [dishes, setDishes] = useState([]);
   const [orders, setOrders] = useState(0);
+  const [search, setSearch] = useState('');
+
+  const { user } = useAuth();
 
   useEffect(()=>{
     async function fetchData(){
@@ -22,9 +26,17 @@ export function Home(){
     fetchData();
   }, [])
 
+  useEffect(()=>{
+    async function fetchData(){
+      const response = await api.get(`dishes/?name=${search}`);
+      setDishes(response.data);
+    }
+    fetchData();
+  }, [search])
+
   return(
     <Container>
-      <Header orders={orders}/>
+      <Header orders={orders} setSearch={setSearch}/>
       <Main>
         <Banner>
           <img src={Cookies} alt="Imagem de Cookies" />
