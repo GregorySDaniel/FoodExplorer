@@ -6,9 +6,11 @@ import { NewDish } from '../pages/NewDish';
 import { EditDish } from '../pages/EditDish';
 import { Orders } from '../pages/Orders';
 import { PageNotFound } from '../pages/PageNotFound';
+import { CartProvider } from '../hooks/cart';
 
 export function AdminRoutes(){
   return(
+    <CartProvider>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/details/:id" element={<Details/>}/>
@@ -18,5 +20,6 @@ export function AdminRoutes(){
 
       <Route path="/*" element={<PageNotFound/>}/>
     </Routes>
+    </CartProvider>
   )
 }
