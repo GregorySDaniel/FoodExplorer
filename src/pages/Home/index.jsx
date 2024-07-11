@@ -13,9 +13,7 @@ import { useAuth } from "../../hooks/auth";
 
 export function Home(){
   const [dishes, setDishes] = useState([]);
-  const [orders, setOrders] = useState(0);
   const [search, setSearch] = useState('');
-
 
   const { user } = useAuth();
 
@@ -37,7 +35,7 @@ export function Home(){
 
   return(
     <Container>
-      <Header orders={orders} setSearch={setSearch}/>
+      <Header setSearch={setSearch}/>
       <Main>
         <Banner>
           <img src={Cookies} alt="Imagem de Cookies" />
@@ -67,8 +65,7 @@ export function Home(){
                 title={dish.name}
                 description={dish.description} 
                 price={dish.price}
-                orders={orders}
-                setOrders={setOrders}/>
+                />
               </SplideSlide>
             ))}
           </Splide>
@@ -94,8 +91,7 @@ export function Home(){
               title={dish.name} 
               description={dish.description} 
               price={dish.price}
-              orders={orders}
-              setOrders={setOrders}/>
+              />
             </SplideSlide>
           ))}
           </Splide>
@@ -121,8 +117,7 @@ export function Home(){
             title={dish.name}
             description={dish.description} 
             price={dish.price}
-            orders={orders}
-            setOrders={setOrders}/>
+            />
             </SplideSlide>
           ))}
           </Splide>

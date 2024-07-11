@@ -4,17 +4,19 @@ import { RiFileList3Line } from "react-icons/ri";
 import Logo from '../../../assets/logo.png'
 import adminLogo from '../../../assets/adminlogo.png'
 import { SideMenu } from "../SideMenu";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { IoMdClose, IoIosLogOut, IoIosSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { Button } from '../Button';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../hooks/auth';
 import { USER_ROLES } from "../../utils/roles";
+import { CartContext } from "../../hooks/cart";
 
-export function Header({orders, setSearch}){
+export function Header({setSearch}){
   const [sideMenu, setSideMenu] = useState(false);
   const navigation = useNavigate();
+  const { cart } = useContext(CartContext);
 
   const { signOut, user } = useAuth();
   return(
@@ -24,7 +26,7 @@ export function Header({orders, setSearch}){
       <Link to="/orders" className="mobile">
       { user.role === USER_ROLES.CUSTOMER && 
       <>
-      <p>{orders ? orders : 0}</p>
+      <p>{cart.length}</p>
       <RiFileList3Line size={32}/>
       </>}
 
@@ -37,7 +39,7 @@ export function Header({orders, setSearch}){
 
       {(user.role === USER_ROLES.ADMIN) ?
       <Button className="desktop" title='Novo prato' onClick={()=>navigation('/new')}/> : 
-      <Button className="desktop" title={`Pedidos (${orders ? orders : 0})`} onClick={()=>navigation('/orders')}/>
+      <Button className="desktop" title={`Pedidos (${cart.length})`} onClick={()=>navigation('/orders')}/>
       }
 
       <SideMenu isOpen={sideMenu} setSearch={setSearch}/>

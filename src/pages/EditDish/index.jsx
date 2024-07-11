@@ -3,18 +3,41 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { AddTag } from '../../components/AddTag';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api } from '../../services/api';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function NewDish(){
+export function EditDish(){
+  const { id } = useParams();
+  const [dish, setDish] = useState({});
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [imageFile, setImageFile] = useState(null)
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("meals");
   const [ingredients, setIngredients] = useState([]);
+
+  useEffect(()=>{
+    async function fetchData(){
+      const response = await api.get(`dishes/${id}`);
+      setDish(response.data);
+    }
+    fetchData();
+  }, [])
+
+
+  useEffect(()=>{
+    setName(dish.name || '');
+    setDescription(dish.description || '');
+    setImageFile(dish.image || '');
+    setPrice(dish.price || '');
+    setCategory(dish.category || '');
+    if(dish.ingredients){
+      const ingredientNames = dish.ingredients.map(ingredient => ingredient.name);
+      setIngredients(ingredientNames);
+    }
+  }, [dish])
 
 
   const navigation = useNavigate();
@@ -23,6 +46,25 @@ export function NewDish(){
     const file = e.target.files[0];
     setImageFile(file);
   };
+
+  async function handleDelete(e){
+    e.preventDefault();
+    const sure = window.confirm('Tem certeza que deseja deletar esse prato?')
+    if(!sure){
+      return
+    }
+    try{
+      await api.delete(`dishes/${id}`)
+      alert("Prato deletado com sucesso!");
+      navigation("/");
+    } catch (e) {
+      if(e.response){
+        alert(e.response.data.message);
+      } else {
+        alert("Não foi possivel deletar o prato");
+      }
+    }
+  }
 
   async function handleSubmit(e){
     e.preventDefault()
@@ -41,14 +83,14 @@ export function NewDish(){
     });
 
     try{ 
-      await api.post('/dishes', fileUploadForm)
-      alert("Prato criado com sucesso!");
+      await api.patch(`dishes/${id}`, fileUploadForm)
+      alert("Prato editado com sucesso!");
       navigation("/");
     } catch (e) {
       if(e.response){
         alert(e.response.data.message);
       } else {
-        alert("Não foi possivel criar prato");
+        alert("Não foi possivel editar o prato");
       }
     }
   }
@@ -59,7 +101,7 @@ export function NewDish(){
       <Main>
 
         <Link to="/">&lt; voltar</Link>
-        <h1>Novo Prato</h1>
+        <h1>Editar Prato</h1>
 
         <form onSubmit={handleSubmit}>
           <ThreeRow>
@@ -70,12 +112,12 @@ export function NewDish(){
 
           <label>
             Nome do prato
-            <input type="text" placeholder="Ex.: Salada Ceasar" onChange={(e) => setName(e.target.value)}/>
+            <input type="text" value={name} placeholder="Ex.: Salada Ceasar" onChange={(e) => setName(e.target.value)}/>
           </label>
           
           <label>
             Categoria
-            <select name="category" onChange={(e) => setCategory(e.target.value)}>
+            <select name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="meals">Refeição</option>
               <option value="dessert">Sobremesa</option>
               <option value="drinks">Bebida</option>
@@ -97,16 +139,18 @@ export function NewDish(){
           <label className="price">
             Preço
             <p>R$</p>
-            <input type="number" step="0.01" min="0" max="100" placeholder="00,00" onChange={(e) => setPrice(e.target.value)} />
+            <input type="number" value={price} step="0.01" min="0" max="100" placeholder="00,00" onChange={(e) => setPrice(e.target.value)} />
           </label>
           </TwoRow>
 
           <label>
             Descrição
-            <textarea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" rows="8" onChange={(e) => setDescription(e.target.value)}/>
+            <textarea value={description} placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" rows="8" onChange={(e) => setDescription(e.target.value)}/>
           </label>
-
-          <Button type="submit" title="Salvar alterações" />
+          <div className="buttons">
+          <Button title="Excluir prato" onClick={handleDelete}/>
+          <Button type="submit" title="Salvar alterações" />  
+          </div>
           
         </form>
 

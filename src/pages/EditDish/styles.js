@@ -63,9 +63,15 @@ export const Main = styled.div`
   }
 
   button{
+    width: 10rem;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: space-between;
     @media(min-width: 1024px){
-      width: 12rem;
-      align-self: flex-end;
+      justify-content: end;
+      gap: 2rem;
     } 
   }
 `;

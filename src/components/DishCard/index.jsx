@@ -3,24 +3,37 @@ import { Button } from '../Button'
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { LuPlus, LuMinus } from "react-icons/lu";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLES } from '../../utils/roles'
 import { GrEdit } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../hooks/cart";
 
-export function DishCard({ img, title, price, id, description, orders, setOrders }){
+export function DishCard({ img, title, price, id, description }){
   const [quantity, setQuantity] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
+
+  const { addToCart, cart } = useContext(CartContext);
+  console.log(cart)
   
   const { user } = useAuth();
 
   const navigation = useNavigate();
 
+  function handleSetOrders(){
+    addToCart({
+      img,
+      quantity,
+      price,
+      dish: title
+    })
+  }
+
   return(
     <Container>
       <div onClick={() => setIsLiked(!isLiked)} className="svg">
-        {(user.role === USER_ROLES.ADMIN) ? <GrEdit size={28} onClick={()=>{navigation('/new')}}/> : (isLiked ? <FaHeart size={28} color='#750310'/> : <FaRegHeart size={28}/>)}
+        {(user.role === USER_ROLES.ADMIN) ? <GrEdit size={28} onClick={()=>{navigation(`edit/${id}`)}}/> : (isLiked ? <FaHeart size={28} color='#750310'/> : <FaRegHeart size={28}/>)}
       </div>
       <Link to={`details/${id}`}><img src={img} alt="Imagem do Prato"></img></Link>
       <p>{title}</p>
@@ -34,7 +47,7 @@ export function DishCard({ img, title, price, id, description, orders, setOrders
       </Select>}
       {(user.role === USER_ROLES.CUSTOMER) &&    
       <Button title="incluir" onClick={()=>{
-        setOrders(orders + quantity);
+        handleSetOrders();
         setQuantity(1);
         }}/>}
     </Container>
