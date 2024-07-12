@@ -98,7 +98,7 @@ export const OrderSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 85%;
+  width: 100%;
   gap: 28px;
   margin-top: 48px;
 

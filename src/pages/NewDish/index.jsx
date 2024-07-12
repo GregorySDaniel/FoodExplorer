@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { api } from '../../services/api';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineFileUpload } from "react-icons/md";
+
 
 export function NewDish(){
   const [name, setName] = useState("")
@@ -65,7 +67,11 @@ export function NewDish(){
           <ThreeRow>
           <label>
             Imagem do prato
-            <input type="file" onChange={handleImageChange}/>
+            <div className="divfile">
+              <MdOutlineFileUpload size={34}/>
+              <p>Selecione imagem</p>
+              <input type="file" onChange={handleImageChange} className="file"/>
+            </div>
           </label>
 
           <label>

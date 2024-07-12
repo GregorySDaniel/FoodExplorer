@@ -4,9 +4,10 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Link } from "react-router-dom";
 import QRcode from '../../../assets/QR.png'
-import { PiPixLogoBold } from "react-icons/pi";
+import { PiPixLogoBold, PiCreditCard } from "react-icons/pi";
 import { CartContext } from "../../hooks/cart";
 import { useContext, useEffect, useState } from "react";
+
 
 export function Orders(){
   const [price, setPrice] = useState(0)
@@ -37,6 +38,10 @@ export function Orders(){
         </OrdersList>
         <Payment>
           <h1>Pagamento</h1>
+            <div>
+              <section className="pressed"><PiPixLogoBold size={28} /> <p>PIX</p></section>
+              <section><PiCreditCard size={28} /><p>Crédito</p></section>
+            </div>
           <section>
             <img src={QRcode} alt="QrCode Pix" />
           </section>

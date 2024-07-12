@@ -13,7 +13,7 @@ export function OrderCard({ quantity, img, dish, price }){
     <Container>
       <img src={img} alt="Imagem do prato" />
       <section>
-        <p>{quantity}x {dish} <span>R${price}</span></p>
+        <p>{quantity}x {dish} <span>R${price*quantity}</span></p>
         <button onClick={handleDelete}>Excluir</button>
       </section>
     </Container>

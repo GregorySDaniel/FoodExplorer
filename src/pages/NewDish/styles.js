@@ -27,6 +27,36 @@ export const Main = styled.div`
   } 
 
 
+  .divfile{
+    display: flex;
+    font-family: 'Poppins', serif;
+    font-size: .9rem;
+    border-radius: 8px;
+    padding: 1.5rem 0;
+    background-color: ${({theme})=>theme.COLORS.DARK_800};
+    color: ${({theme})=>theme.COLORS.LIGHT_100};
+    border: 0;
+    position: relative;
+    min-width: 14rem;
+    width: 100%;
+
+    >svg {
+      position: absolute;
+      top: 10%;
+      left: 1.2rem;
+    }
+
+    p{
+      position: absolute;
+      left: 3.6rem;
+      top: 30%;
+    }
+  }
+
+  .file{
+    display: none;
+  }
+
   a:hover{
     transform: none;
   }

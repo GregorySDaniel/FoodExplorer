@@ -15,7 +15,6 @@ export function DishCard({ img, title, price, id, description }){
   const [isLiked, setIsLiked] = useState(false);
 
   const { addToCart, cart } = useContext(CartContext);
-  console.log(cart)
   
   const { user } = useAuth();
 

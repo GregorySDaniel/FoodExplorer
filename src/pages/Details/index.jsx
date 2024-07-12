@@ -6,16 +6,29 @@ import { Tag } from '../../components/Tag'
 import { LuPlus, LuMinus } from "react-icons/lu";
 import Dish from '../../../assets/Dish.png'
 import { Link, useParams } from 'react-router-dom'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { api } from "../../services/api";
 import { useAuth } from '../../hooks/auth';
 import { USER_ROLES } from "../../utils/roles";
+import { CartContext } from "../../hooks/cart";
 
   export function Details(){
     const [quantity, setQuantity] = useState(1);
     const [dish, setDish] = useState({});
     const { id } = useParams();
     const { user } = useAuth();
+
+    function handleSetOrders(){
+      const img = `${api.defaults.baseURL}/files/${dish.image}`;
+      addToCart({
+        img,
+        quantity,
+        price : dish.price,
+        dish: dish.name
+      })
+    }
+
+    const { addToCart, cart } = useContext(CartContext);
 
     useEffect(()=>{
       async function fetchData(){
@@ -50,7 +63,10 @@ import { USER_ROLES } from "../../utils/roles";
               </Select>}
               { user.role ===  USER_ROLES.ADMIN ?
                 <Button title='Editar prato'/> :
-                <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`}/>
+                <Button title={`pedir ∙ R$ ${(dish.price * quantity).toFixed(2)}`} onClick={()=>{
+                  handleSetOrders();
+                  setQuantity(1);
+                  }}/>
               }
             </OrderSection>
           </section>
