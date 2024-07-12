@@ -50,7 +50,7 @@ export function SignUp(){
         </label>
         <label>
           Senha
-          <input type="password" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)}/>
+          <input type="password" minLength="6" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)}/>
         </label>
         <Button title="Criar conta" type="submit"/>
       </form>
